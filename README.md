@@ -87,16 +87,28 @@ perman import
 ```
 
 ## Export
-
+`TBD`
 
 ## Backup
-By rebasing, perman will treat the current database as a fresh new one and re-integrate w/ it from a new start point. You can rebase the database at any time you want by using the `init` command with `--force	` option:
+By backinng up, perman will backup all role and permission related data to the configured backup path:
 ```bash
-perman init --config /path/to/the/config/file --force
+perman backup --config /path/to/the/config/file
 ```
 or without the `--config` option if there is a `.permanrc` configuration file in the directory you're calling perman:
 ```bash
-perman init --force
+perman backup
+```
+
+## Change Scripts
+By backinng up, perman will generate the sql scripts used to update the roles and permissions. Then you can integrate the change scripts w/ your database version control tool or execute the scripts manually:
+```bash
+perman change --config /path/to/the/config/file --out /path/to/the/change-script/file or
+perman change --config /path/to/the/config/file > /path/to/the/change-script/file
+```
+or without the `--config` option if there is a `.permanrc` configuration file in the directory you're calling perman:
+```bash
+perman change --out /path/to/the/change-script/file or
+perman change > /path/to/the/change-script/file
 ```
 
 # Sample config files
@@ -107,9 +119,9 @@ perman init --force
 dialect: mysql
 host: 127.0.0.1
 port: 3306
-user: root
-password: pwd01!
-database: kingboss
+user: user
+password: password
+database: name
 
 
 # permissions definition file path
@@ -122,14 +134,16 @@ tables:
   permission_categories: permission_category
   associations: role_permission
 
-
+# others
+backup_path: ./backups
 ```
 
 ## JSON
 ```json
 {
   "dialect": "mysql",
-  "database": "kingboss",
+  "database": "name",
+  "backup_path": "./backups",
   "host": "127.0.0.1",
   "tables": {
     "associations": "role_permission",
@@ -138,9 +152,9 @@ tables:
     "permissions": "permission"
   },
   "permissions": "./conf/permissions.conf",
-  "password": "pwd01!",
+  "password": "password",
   "port": 3306,
-  "user": "root"
+  "user": "user"
 }
 ```
 
@@ -149,19 +163,20 @@ tables:
 ```js
 var path = require('path');
 module.exports = {
-  "dialect": "mysql",
-  "database": "kingboss",
-  "host": "127.0.0.1",
-  "tables": {
-    "associations": "role_permission",
-    "permission_categories": "permission_category",
-    "roles": "role",
-    "permissions": "permission"
+  dialect: 'mysql',
+  database: 'name',
+  backup_path: './backups',
+  host: '127.0.0.1',
+  tables: {
+    'associations': 'role_permission',
+    'permission_categories': 'permission_category',
+    'roles': 'role',
+    'permissions': 'permission'
   },
-  "permissions": "./conf/permissions.conf",
-  "password": "pwd01!",
-  "port": 3306,
-  "user": "root"
+  permissions: path.join(__dirname, './conf/permissions.conf'),
+  password: 'password',
+  port: 3306,
+  user: 'user'
 };
 
 ```
