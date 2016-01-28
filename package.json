@@ -1,0 +1,40 @@
+{
+  "name": "node-perman",
+  "version": "0.1.0",
+  "description": "A simple database role and permissions import/export tool",
+  "preferGlobal": true,
+  "bin": {
+    "perman": "index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nn1900/perman.git"
+  },
+  "keywords": [
+    "database role and permission management tool"
+  ],
+  "author": "eric",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nn1900/perman/issues"
+  },
+  "homepage": "https://github.com/nn1900/perman#readme",
+  "dependencies": {
+    "change-case": "^2.3.1",
+    "colors": "^1.1.2",
+    "es6-promise": "^3.0.2",
+    "glob": "^6.0.1",
+    "js-yaml": "^3.4.6",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.10.6",
+    "mysql": "^2.10.0",
+    "yargs": "^3.31.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0"
+  }
+}

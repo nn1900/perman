@@ -1,0 +1,21 @@
+# database configuration
+dialect: mysql
+host: 127.0.0.1
+port: 3306
+user: root
+password: pwd01!
+database: kingboss
+
+
+# permissions definition file path
+permissions: ./permissions.conf.example
+
+# table names of roles, permissions, and their associations
+tables:
+  roles: role
+  permissions: permission
+  permission_categories: permission_category
+  associations: role_permission
+
+# others
+backup_path: ./backups
