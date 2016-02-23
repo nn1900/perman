@@ -181,6 +181,43 @@ module.exports = {
 
 ```
 
+# Permission definitions example
+You define the permissions in the following format:
+```
+c1
+  - p_1_1/id_p_1_1
+c2
+  - p_2_1/id_p_2_1
+  c2_1
+    c2_1_1
+      c2_1_1_1
+        - p2_1_1_1_1/id_p2_1_1_1_1
+      c2_1_1_2
+        - p2_1_1_2_1/id_p2_1_1_2_1
+        - p2_1_1_2_2/id_p2_1_1_2_2
+    c2_1_2
+      c2_1_2_1
+        - p2_1_2_1_1/id_p2_1_2_1_1
+        - p2_1_2_1_2/id_p2_1_2_1_2
+  c2_2
+    c2_2_1
+      - p2_2_1_1/id_p2_2_1_1
+      c2_2_1_1
+        - p2_2_1_1_1/id_p2_2_1_1_1
+        - p2_2_1_1_2/id_p2_2_1_1_2
+      - p2_2_1_2/id_p2_2_1_2
+      - p2_2_1_3/id_p2_2_1_3
+    - p2_2_1/id_p2_2_1
+    - p2_2_2/id_p2_2_2
+      c2_1_1_2
+        - p2_2_1_2_1/id_p2_2_1_2_1
+        - p2_2_1_2_2/id_p2_2_1_2_2
+        - p2_2_1_2_3/id_p2_2_1_2_3
+```
+where a line that is not leaded by a dash (-) represents a permission category,
+and a line that begins w/ a dash (-) represents a permission which is defined as
+`permission_name/permission_id`, e.g., `create some object/create_some_object`. 
+
 # CHANGELOG
 [CHANGELOG](./CHANGELOG.md)
 
