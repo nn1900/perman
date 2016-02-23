@@ -113,6 +113,7 @@ perman change > /path/to/the/change-script/file
 
 # Sample config files
 
+__NOTE__: default table names will used if they're not specified in the config file. 
 ## YAML
 ```yaml
 # database configuration
@@ -128,6 +129,7 @@ database: name
 permissions: ./conf/permissions.conf
 
 # table names of roles, permissions, and their associations
+# default names will be used if not configured.
 tables:
   roles: role
   permissions: permission
@@ -216,7 +218,9 @@ c2
 ```
 where a line that is not leaded by a dash (-) represents a permission category,
 and a line that begins w/ a dash (-) represents a permission which is defined as
-`permission_name/permission_id`, e.g., `create some object/create_some_object`. 
+`permission_name/permission_id`, e.g., `create some object/create_some_object`.
+
+__IMPORTANT NOTE: please indent each line w/ SPACES instead of TABS. __
 
 # CHANGELOG
 [CHANGELOG](./CHANGELOG.md)

@@ -1,6 +1,6 @@
 {
   "name": "node-perman",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple database role and permissions import/export tool",
   "preferGlobal": true,
   "bin": {
